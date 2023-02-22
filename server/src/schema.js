@@ -4,6 +4,7 @@ const typeDefs = gql`
 	type Query{
 		tracksForHome: [Track!]!
 		track(id: ID!): Track
+		module(id: ID!): Module!
 	}
 	
 	type Track{
@@ -27,7 +28,9 @@ const typeDefs = gql`
 	type Module{
 		id: ID!
 		title: String!
+		content: String
 		length: Int
+		videoUrl: String
 	}
 `;
 
