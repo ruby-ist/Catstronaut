@@ -9,7 +9,7 @@ const GET_MODULE = gql`
             title
             modules {
                 title
-                length
+                durationInSeconds
                 id
             }
             id

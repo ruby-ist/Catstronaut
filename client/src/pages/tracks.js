@@ -19,7 +19,7 @@ const TRACKS = gql`
                 name
                 photo
             }
-            length
+            durationInSeconds
             modulesCount
             thumbnail
         }
