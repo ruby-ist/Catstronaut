@@ -22,7 +22,8 @@ const typeDefs = gql`
         id: ID!
         title: String!
         author: Author!
-        length: Int
+        length: Int @deprecated(reason: "Use durationInSeconds")
+		durationInSeconds: Int
         modulesCount: Int
         thumbnail: String
         description: String
@@ -40,7 +41,8 @@ const typeDefs = gql`
 		id: ID!
 		title: String!
 		content: String
-		length: Int
+		length: Int @deprecated(reason: "Use durationInSeconds")
+		durationInSeconds: Int
 		videoUrl: String
 	}
 `;
