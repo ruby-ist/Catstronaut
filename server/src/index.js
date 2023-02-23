@@ -3,16 +3,23 @@ const typeDefs = require('./schema');
 const resolvers = require('./resolvers');
 const TrackApi = require('./datasources/track-api');
 
-const server = new ApolloServer({
-	typeDefs,
-	resolvers,
-	dataSources: () => {
-		return {
-			trackAPI: new TrackApi()
+async function startApolloServer(typeDefs, resolvers) {
+	const server = new ApolloServer({
+		typeDefs,
+		resolvers,
+		dataSources: () => {
+			return {
+				trackAPI: new TrackApi()
+			}
 		}
-	}
-});
+	});
 
-server.listen().then( () => {
-	console.log("Listening!!!");
-});
+	const { url, port } = await server.listen({port: process.env.PORT || 4000});
+	console.log(`
+      🚀  Server is running
+      🔉  Listening on port ${port}
+      📭  Query at ${url}
+    `);
+}
+
+startApolloServer(typeDefs, resolvers);
